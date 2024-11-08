@@ -30,6 +30,8 @@ This project sets up a PostgreSQL database cluster and a standalone PostgreSQL i
 
 The following set up is ran on Cent OS 9 Virtual machine.
 
+## Pre-requisites
+
 ### 1. Install PostgreSQL Client on VM
 
 ```
@@ -138,7 +140,9 @@ git clone https://github.com/postgrestraining/postgresql-helm-charts.git
 cd postgresql-helm-charts
 ```
 
-## Deploy PostgreSQL Database Cluster with Helm
+## PostgreSQL Deployment
+
+### 1. Deploy PostgreSQL Database Cluster with Helm
 
 ```
 cd /root/postgresql-helm-charts
