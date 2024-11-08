@@ -40,7 +40,7 @@ The following set up is ran on Cent OS 9 Virtual machine.
   - [Install and Configure Helm](#6-install-and-configure-helm)
   - [Download the helm charts to deploy PostgreSQL](#7-download-the-helm-charts-to-deploy-postgresql)
   - [PostgreSQL Deployment](#postgresql-deployment)
-- [PostgreSQL Deployment](#Pos)
+- [PostgreSQL Deployment](#postgresql-deployment)
   - [Deploy PostgreSQL Database Cluster with Helm](#1-deploy-postgresql-database-cluster-with-helm)
   - [Login to the pod and create required tables and install vi and procps](#2-login-to-the-pod-and-create-required-tables-and-install-vi-and-procps)
   - [Stay within the pod and create tables](#3-stay-within-the-pod-and-create-tables)
