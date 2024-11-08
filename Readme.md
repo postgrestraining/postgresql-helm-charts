@@ -43,6 +43,6 @@ postgresql-helm-charts/
 └── README.md
 ```
 
-
+For set-up instructions [click here](https://github.com/postgrestraining/postgresql-helm-charts/blob/main/Setup-instructions.md)
 
 
