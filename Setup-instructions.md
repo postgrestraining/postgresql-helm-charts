@@ -47,7 +47,8 @@ The following set up is ran on Cent OS 9 Virtual machine.
   - [From the VM, insert the data.](#4-from-the-vm-insert-the-data)
 - [Set up replication for primary deployment](#set-up-replication-for-primary-deployment)
 - [Set up standalone PostgreSQL deployment and convert it as replica for current primary](#set-up-standalone-postgresql-deployment-and-convert-it-as-replica-for-current-primary)
-- [Convert the standalone-postgresql-548f49dc97-spkjs to replica](#convert-the-standalone-postgresql-548f49dc97-spkjs-to-replica) 
+- [Convert the standalone-postgresql-548f49dc97-spkjs to replica](#convert-the-standalone-postgresql-548f49dc97-spkjs-to-replica)
+- [Push the code to git](#to-push-your-folder-to-git-follow-these-steps)
   
 ## Pre-requisites
 
