@@ -175,5 +175,13 @@ primary-postgresql   LoadBalancer   10.105.10.137   <pending>     5432:30467/TCP
 [root@lab01 postgresql-helm-charts]#
 ```
 
+### 2. Login to the pod and create required tables and install vi and procps 
 
+- kubectl exec -it <pod_name derived from kubectl get pods> -- /bin/bash
+```
+kubectl exec -it primary-postgresql-66bd47f89-jnpnj -- /bin/bash
+apt-get update
+apt install vi
+apt install procps
+```
 
