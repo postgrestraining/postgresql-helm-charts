@@ -192,12 +192,11 @@ apt install procps
 [root@lab01 postgresql-helm-charts]# kubectl exec -it primary-postgresql-66bd47f89-jnpnj -- su - postgres
 postgres@primary-postgresql-66bd47f89-jnpnj:~$ cd /var/lib/postgresql/data
 postgres@primary-postgresql-66bd47f89-jnpnj:~/data$ vi pg_hba.conf
-
---
+..
 host    replication     all             0.0.0.0/0               trust
 host    all             all             0.0.0.0/0               trust
 ..
---
+..
 
 postgres@primary-postgresql-66bd47f89-jnpnj:~/data$ psql
 psql (17.0 (Debian 17.0-1.pgdg120+1))
@@ -210,4 +209,104 @@ postgres=# select pg_reload_conf();
 (1 row)
 
 ```
+### 3. Stay within the pod and create tables
 
+```
+CREATE TABLE authors (
+    author_id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE books (
+    book_id SERIAL PRIMARY KEY,
+    title VARCHAR(200) NOT NULL,
+    author_id INT REFERENCES authors(author_id)
+);
+
+CREATE TABLE test (
+	id int,
+	val int
+);
+
+insert into test values(1,1);
+```
+### 4. From the VM, insert the data. 
+
+- Use port forwarding to to load the data from python script.
+
+**Session 1**
+
+```
+[root@lab01 postgresql-helm-charts]# kubectl get svc
+NAME                 TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+kubernetes           ClusterIP      10.96.0.1       <none>        443/TCP          31m
+primary-postgresql   LoadBalancer   10.105.10.137   <pending>     5432:30467/TCP   18m
+[root@lab01 postgresql-helm-charts]#
+
+[root@lab01 postgresql-helm-charts]# kubectl port-forward svc/primary-postgresql 5432:5432
+Forwarding from 127.0.0.1:5432 -> 5432
+Forwarding from [::1]:5432 -> 5432
+
+```
+
+While the session in open state, open session 2
+
+**Session 2**
+
+```
+python3.9 fake_inserts.py
+```
+
+Output should look like this
+
+```
+[root@lab01 postgresql-helm-charts]# python3.9 fake_inserts.py
+Inserting authors...
+Total authors inserted: 1000
+Inserting books...
+5000 books inserted...
+10000 books inserted...
+15000 books inserted...
+20000 books inserted...
+25000 books inserted...
+30000 books inserted...
+35000 books inserted...
+40000 books inserted...
+45000 books inserted...
+50000 books inserted...
+55000 books inserted...
+60000 books inserted...
+65000 books inserted...
+70000 books inserted...
+75000 books inserted...
+80000 books inserted...
+85000 books inserted...
+90000 books inserted...
+95000 books inserted...
+100000 books inserted...
+Total books inserted: 100000
+Data insertion completed.
+[root@lab01 postgresql-helm-charts]#
+
+[root@lab01 postgresql-helm-charts]# kubectl exec -it primary-postgresql-66bd47f89-jnpnj -- su - postgres
+postgres@primary-postgresql-66bd47f89-jnpnj:~$ psql
+psql (17.0 (Debian 17.0-1.pgdg120+1))
+Type "help" for help.
+
+postgres=# \dt+
+                                      List of relations
+ Schema |  Name   | Type  |  Owner   | Persistence | Access method |    Size    | Description
+--------+---------+-------+----------+-------------+---------------+------------+-------------
+ public | authors | table | postgres | permanent   | heap          | 80 kB      |
+ public | books   | table | postgres | permanent   | heap          | 7552 kB    |
+ public | test    | table | postgres | permanent   | heap          | 8192 bytes |
+(3 rows)
+
+postgres=# select count(1) from books;
+ count
+--------
+ 100000
+(1 row)
+
+postgres=#
+```
