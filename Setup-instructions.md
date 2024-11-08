@@ -112,3 +112,26 @@ Kustomize Version: v5.4.2
 [root@lab01 ~]#
 ```
 
+### 6. Install and Configure Helm
+
+```
+curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+helm repo add bitnami https://charts.bitnami.com/bitnami
+helm repo update
+```
+
+Output for the last command should be something like
+
+```
+[root@lab01 ~]# helm repo update
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "bitnami" chart repository
+Update Complete. ⎈Happy Helming!⎈
+[root@lab01 ~]#
+```
+
+### 7. Deploy a PostgreSQL Database Cluster with Helm
+
+
+
+
