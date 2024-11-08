@@ -30,6 +30,11 @@ This project sets up a PostgreSQL database cluster and a standalone PostgreSQL i
 
 The following set up is ran on Cent OS 9 Virtual machine.
 
+## Table of Contents
+- [Pre-requisites](#heading-1)
+  - [Subheading in Heading 1](#subheading-in-heading-1)
+- [Heading 2](#heading-2)
+
 ## Pre-requisites
 
 ### 1. Install PostgreSQL Client on VM
