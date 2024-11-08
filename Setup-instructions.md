@@ -472,4 +472,19 @@ postgres=#
 pod "standalone-postgresql-7454dbcbb7-f6zdm" deleted
 [root@lab01 templates]#
 ```
+## To push your folder to Git, follow these steps:
 
+```
+cd /root/postgresql-helm-charts
+git init
+git add .
+git config --global user.email "postgrestraining@gmail.com"
+git config --global user.name ""postgrestraining"
+git commit -m "Initial commit with folder contents"
+
+## Create a new repository on GitHub (for example., created helm-push repository)
+
+## Push the folder
+git remote add origin https://github.com/postgrestraining/helm-push.git
+git push -u origin main
+```
