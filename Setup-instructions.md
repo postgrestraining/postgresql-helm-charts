@@ -450,3 +450,11 @@ postgres=#
 
 ```
 
+### Restart the pod if required
+
+```
+[root@lab01 templates]# kubectl delete pods standalone-postgresql-7454dbcbb7-f6zdm
+pod "standalone-postgresql-7454dbcbb7-f6zdm" deleted
+[root@lab01 templates]#
+```
+
