@@ -47,7 +47,7 @@ systemctl enable --now docker
 systemctl start docker
 ```
 
-After successful installation, docker status should show as below
+After successful installation, docker status should look like below
 
 ```
 [root@lab01 ~]# systemctl status docker
@@ -68,3 +68,47 @@ Nov 09 01:05:41 lab01 dockerd[37006]: time="2024-11-09T01:05:41.595896119+05:30"
 Nov 09 01:05:42 lab01 dockerd[37006]: time="2024-11-09T01:05:42.916140107+05:30" level=info msg="Firewalld: interface docker0 already >
 Nov 09 01:05:43 lab01 dockerd[37006]: time="2024-11-09T01:05:43.107691425+05:30" level=info msg="Loading containers: done."
 ```
+### 3. Install Python to load the data
+
+```
+sudo dnf install -y python3
+dnf install python3-pip -y
+pip3 install faker psycopg2-binary
+```
+
+### 4. Install and Start Minikube
+
+```
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+minikube start --driver=docker --cpus=2 --memory=2048mb --disk-size=20g --force
+```
+To check if it has successfully configured run `minikube status` and you get something like below
+
+```
+[root@lab01 ~]# minikube status
+minikube
+type: Control Plane
+host: Running
+kubelet: Running
+apiserver: Running
+kubeconfig: Configured
+```
+
+### 5. Install kubectl
+
+```
+curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod +x kubectl
+sudo mv kubectl /usr/local/bin/
+```
+
+Verify the installation
+
+```
+[root@lab01 ~]# kubectl version --client
+Client Version: v1.31.0
+Kustomize Version: v5.4.2
+[root@lab01 ~]#
+```
+
