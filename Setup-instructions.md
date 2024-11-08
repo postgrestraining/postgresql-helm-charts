@@ -130,7 +130,14 @@ Update Complete. ⎈Happy Helming!⎈
 [root@lab01 ~]#
 ```
 
-### 7. Deploy a PostgreSQL Database Cluster with Helm
+### 7. Download the helm charts to deploy PostgreSQL
+
+```
+sudo dnf install -y git
+git clone https://github.com/postgrestraining/postgresql-helm-charts.git
+cd postgresql-helm-charts
+```
+
 
 
 
