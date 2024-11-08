@@ -172,6 +172,14 @@ cd /root/postgresql-helm-charts
 helm install primary-postgresql ./chart-primary
 ```
 
+Check if the deployment is configured with LoadBalancer
+
+```
+[root@lab01 postgresql-helm-charts]# kubectl describe svc primary-postgresql | grep Type
+Type:                     LoadBalancer
+[root@lab01 postgresql-helm-charts]#
+```
+
 Check if the deployment is successful, the output should look like this 
 
 ```
