@@ -43,6 +43,6 @@ postgresql-helm-charts/
 └── README.md
 ```
 
-## Setting up the activity.
+
 
 
