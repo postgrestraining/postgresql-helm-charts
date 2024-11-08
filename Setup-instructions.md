@@ -138,7 +138,34 @@ git clone https://github.com/postgrestraining/postgresql-helm-charts.git
 cd postgresql-helm-charts
 ```
 
+## Deploy PostgreSQL Database Cluster with Helm
 
+```
+cd /root/postgresql-helm-charts
+helm install primary-postgresql ./chart-primary
+```
+
+Check if the deployment is successful, the output should look like this 
+
+```
+[root@lab01 postgresql-helm-charts]# helm install primary-postgresql ./chart-primary
+NAME: primary-postgresql
+LAST DEPLOYED: Sat Nov  9 01:23:46 2024
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+
+[root@lab01 postgresql-helm-charts]# kubectl get pods
+NAME                                 READY   STATUS    RESTARTS   AGE
+primary-postgresql-66bd47f89-jnpnj   1/1     Running   0          42s
+
+[root@lab01 postgresql-helm-charts]# kubectl get svc
+NAME                 TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+kubernetes           ClusterIP      10.96.0.1       <none>        443/TCP          13m
+primary-postgresql   LoadBalancer   10.105.10.137   <pending>     5432:30467/TCP   45s
+[root@lab01 postgresql-helm-charts]#
+```
 
 
 
