@@ -33,8 +33,22 @@ The following set up is ran on Cent OS 9 Virtual machine.
 ## Table of Contents
 - [Pre-requisites](#Pre-requisites)
   - [Install PostgreSQL Client on VM](#1-install-postgresql-client-on-vm)
-- [PostgreSQL Deployment](#postgresql-deployment)
-
+  - [Install and docker](#2-install-and-docker)
+  - [Install Python to load the data](#3-install-python-to-load-the-data)
+  - [Install and Start Minikube](#4-install-and-start-minikube)
+  - [Install kubectl](#5-install-kubectl)
+  - [Install and Configure Helm](#6-install-and-configure-helm)
+  - [Download the helm charts to deploy PostgreSQL](#7-download-the-helm-charts-to-deploy-postgresql)
+  - [PostgreSQL Deployment](#postgresql-deployment)
+- [PostgreSQL Deployment](#Pos)
+  - [Deploy PostgreSQL Database Cluster with Helm](#1-deploy-postgresql-database-cluster-with-helm)
+  - [Login to the pod and create required tables and install vi and procps](#2-login-to-the-pod-and-create-required-tables-and-install-vi-and-procps)
+  - [Stay within the pod and create tables](#3-stay-within-the-pod-and-create-tables)
+  - [From the VM, insert the data.](#4-from-the-vm-insert-the-data)
+- [Set up replication for primary deployment](#set-up-replication-for-primary-deployment)
+- [Set up standalone PostgreSQL deployment and convert it as replica for current primary](#set-up-standalone-postgresql-deployment-and-convert-it-as-replica-for-current-primary)
+- [Convert the standalone-postgresql-548f49dc97-spkjs to replica](#convert-the-standalone-postgresql-548f49dc97-spkjs-to-replica) 
+  
 ## Pre-requisites
 
 ### 1. Install PostgreSQL Client on VM
