@@ -177,11 +177,37 @@ primary-postgresql   LoadBalancer   10.105.10.137   <pending>     5432:30467/TCP
 
 ### 2. Login to the pod and create required tables and install vi and procps 
 
-- kubectl exec -it <pod_name derived from kubectl get pods> -- /bin/bash
+**Command to login:** `kubectl exec -it <pod_name derived from kubectl get pods> -- /bin/bash`
+
 ```
 kubectl exec -it primary-postgresql-66bd47f89-jnpnj -- /bin/bash
 apt-get update
 apt install vi
 apt install procps
+```
+
+**exit and login as postgres user:** `kubectl exec -it <pod_name derived from kubectl get pods> -- su - postgres`
+
+```
+[root@lab01 postgresql-helm-charts]# kubectl exec -it primary-postgresql-66bd47f89-jnpnj -- su - postgres
+postgres@primary-postgresql-66bd47f89-jnpnj:~$ cd /var/lib/postgresql/data
+postgres@primary-postgresql-66bd47f89-jnpnj:~/data$ vi pg_hba.conf
+
+--
+host    replication     all             0.0.0.0/0               trust
+host    all             all             0.0.0.0/0               trust
+..
+--
+
+postgres@primary-postgresql-66bd47f89-jnpnj:~/data$ psql
+psql (17.0 (Debian 17.0-1.pgdg120+1))
+Type "help" for help.
+
+postgres=# select pg_reload_conf();
+ pg_reload_conf
+----------------
+ t
+(1 row)
+
 ```
 
