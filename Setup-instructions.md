@@ -32,6 +32,7 @@ The following set up is ran on Cent OS 9 Virtual machine.
 
 ## Table of Contents
 - [Pre-requisites](#Pre-requisites)
+  - [Install PostgreSQL Client on VM](#1-install-postgresql-client-on-vm)
 - [PostgreSQL Deployment](#postgresql-deployment)
 
 ## Pre-requisites
