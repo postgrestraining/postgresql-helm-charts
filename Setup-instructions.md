@@ -1,5 +1,8 @@
-# PostgreSQL Set-up on Minikube
-This project sets up a PostgreSQL database cluster and a standalone PostgreSQL instance on a Minikube-based Kubernetes environment, including asynchronous replication from the cluster to the standalone instance.
+# PostgreSQL Cluster with Load Balancer and Replication on Minikube
+
+**Overview**
+
+This project demonstrates the deployment and management of a PostgreSQL database cluster with a load balancer using Kubernetes and Helm. It also showcases asynchronous replication to a standalone PostgreSQL database.
 
 ### Requirement
 
