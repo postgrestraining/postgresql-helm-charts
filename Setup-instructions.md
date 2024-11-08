@@ -32,7 +32,7 @@ The following set up is ran on Cent OS 9 Virtual machine.
 
 ## Table of Contents
 - [Pre-requisites](#Pre-requisites)
-- [PostgreSQL Deployment](#Pre-requisites)
+- [PostgreSQL Deployment](#postgresql-deployment)
 
 ## Pre-requisites
 
